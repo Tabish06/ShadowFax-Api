@@ -2,7 +2,6 @@
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/shadowfax_api`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -13,16 +12,62 @@ gem 'shadowfax_api'
 ```
 
 And then execute:
-
-    $ bundle
+```ruby
+    bundle
+```
 
 Or install it yourself as:
 
-    $ gem install shadowfax_api
+```ruby
+    gem install shadowfax_api
+```
+
+**Add shadowfax.yml in config file as**
+    
+```ruby
+    environment_name:
+      url: given_url
+      key: given_key
+```
+
+**If you want to specific config file then you can use this method for initializing the configuration
+```ruby
+    ShadowfaxApi::Configuration::Config.load("config/shadowfax.yml",env: Rails.env)
+```
+
 
 ## Usage
 
-TODO: Write usage instructions here
+
+
+Get Serviceable Pincodes
+```ruby
+    ShadowfaxApi.get_servicable_pincodes
+````
+
+Get Response if particular pincode is serviceable
+```ruby
+    ShadowfaxApi.check_serviceable_pincode
+```
+Generate Package
+```ruby
+    ShadowfaxApi.create_package(package_data)
+```
+
+Get Package Details
+```ruby
+    ShadowfaxApi.get_delivery_details(awb_number)
+```
+
+Get Bulk Package Details
+```ruby
+    ShadowfaxApi.get_bulk_query(awb_data)
+```
+
+Cancel Delivery Request
+```ruby
+    ShadowfaxApi.cancel_delivery_request(data)
+```
 
 ## Development
 
@@ -32,7 +77,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/shadowfax_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Tabish06/shadowfax_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
